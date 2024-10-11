@@ -1,0 +1,45 @@
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: 'tsconfig.json',
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  root: true,
+  env: {
+    node: true,
+    jest: true,
+  },
+  ignorePatterns: ['.eslintrc.js'],
+  rules: {
+    'max-line-length': [true, { limit: 120, 'ignore-pattern': '".*"' }],
+    'no-restricted-globals': [true, 'name', 'length', 'event', 'status'],
+    'no-empty-interface': false,
+    quotemark: [true, 'single', 'avoid-escape', 'jsx-double'],
+    'object-literal-sort-keys': false,
+    'prefer-const': true,
+    'ordered-imports': false,
+    'member-access': false,
+    'member-ordering': [true, { order: 'statics-first' }],
+    'arrow-parens': [true, 'ban-single-arg-parens'],
+    'interface-name': [false, 'always-prefix'],
+    'trailing-comma': [
+      false,
+      {
+        multiline: {
+          objects: 'always',
+          arrays: 'always',
+          functions: 'never',
+          typeLiterals: 'ignore',
+        },
+        esSpecCompliant: true,
+      },
+    ],
+    semicolon: [true, 'always', 'ignore-bound-class-methods'],
+    'max-classes-per-file': false,
+    'no-console': [true, 'log', 'error'],
+    'no-var-requires': false,
+  },
+};
